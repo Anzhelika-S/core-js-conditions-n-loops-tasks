@@ -125,8 +125,57 @@ function isIsoscelesTriangle(a, b, c) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  let romanNum;
+  if (num <= 10) {
+    switch (num) {
+      case 1:
+        romanNum = 'I';
+        break;
+      case 2:
+        romanNum = 'II';
+        break;
+      case 3:
+        romanNum = 'III';
+        break;
+      case 4:
+        romanNum = 'IV';
+        break;
+      case 5:
+        romanNum = 'V';
+        break;
+      case 6:
+        romanNum = 'VI';
+        break;
+      case 7:
+        romanNum = 'VII';
+        break;
+      case 8:
+        romanNum = 'VIII';
+        break;
+      case 9:
+        romanNum = 'IX';
+        break;
+      case 10:
+        romanNum = 'X';
+        break;
+      default:
+        return romanNum;
+    }
+  }
+  if (num > 10 && num <= 20) {
+    const dec = convertToRomanNumerals(num - 10);
+    romanNum = `X${dec}`;
+  }
+  if (num > 20 && num <= 30) {
+    const dec = convertToRomanNumerals(num - 20);
+    romanNum = `XX${dec}`;
+  }
+  if (num > 30 && num < 40) {
+    const dec = convertToRomanNumerals(num - 30);
+    romanNum = `XXX${dec}`;
+  }
+  return romanNum;
 }
 
 /**
@@ -144,8 +193,57 @@ function convertToRomanNumerals(/* num */) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  throw new Error('Not implemented');
+function convertNumberToString(numberStr) {
+  let strNum = '';
+  for (let i = 0; i < numberStr.length; i += 1) {
+    switch (numberStr[i]) {
+      case '1':
+        strNum += 'one ';
+        break;
+      case '0':
+        strNum += 'zero ';
+        break;
+      case '2':
+        strNum += 'two ';
+        break;
+      case '3':
+        strNum += 'three ';
+        break;
+      case '4':
+        strNum += 'four ';
+        break;
+      case '5':
+        strNum += 'five ';
+        break;
+      case '6':
+        strNum += 'six ';
+        break;
+      case '7':
+        strNum += 'seven ';
+        break;
+      case '8':
+        strNum += 'eight ';
+        break;
+      case '9':
+        strNum += 'nine ';
+        break;
+      case '-':
+        strNum += 'minus ';
+        break;
+      case '.':
+        strNum += 'point ';
+        break;
+      case ',':
+        strNum += 'point ';
+        break;
+      default:
+        return strNum;
+    }
+  }
+  if (strNum[strNum.length - 1] === ' ') {
+    strNum = strNum.slice(0, -1);
+  }
+  return strNum;
 }
 
 /**

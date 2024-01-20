@@ -195,54 +195,99 @@ function convertToRomanNumerals(num) {
  */
 function convertNumberToString(numberStr) {
   let strNum = '';
-  for (let i = 0; i < numberStr.length; i += 1) {
-    switch (numberStr[i]) {
-      case '1':
-        strNum += 'one ';
-        break;
-      case '0':
-        strNum += 'zero ';
-        break;
-      case '2':
-        strNum += 'two ';
-        break;
-      case '3':
-        strNum += 'three ';
-        break;
-      case '4':
-        strNum += 'four ';
-        break;
-      case '5':
-        strNum += 'five ';
-        break;
-      case '6':
-        strNum += 'six ';
-        break;
-      case '7':
-        strNum += 'seven ';
-        break;
-      case '8':
-        strNum += 'eight ';
-        break;
-      case '9':
-        strNum += 'nine ';
-        break;
-      case '-':
-        strNum += 'minus ';
-        break;
-      case '.':
-        strNum += 'point ';
-        break;
-      case ',':
-        strNum += 'point ';
-        break;
-      default:
-        return strNum;
+  for (let i = 0; i <= numberStr.length - 1; i += 1) {
+    if (numberStr[i] !== numberStr[numberStr.length - 1]) {
+      switch (numberStr[i]) {
+        case '1':
+          strNum += 'one ';
+          break;
+        case '0':
+          strNum += 'zero ';
+          break;
+        case '2':
+          strNum += 'two ';
+          break;
+        case '3':
+          strNum += 'three ';
+          break;
+        case '4':
+          strNum += 'four ';
+          break;
+        case '5':
+          strNum += 'five ';
+          break;
+        case '6':
+          strNum += 'six ';
+          break;
+        case '7':
+          strNum += 'seven ';
+          break;
+        case '8':
+          strNum += 'eight ';
+          break;
+        case '9':
+          strNum += 'nine ';
+          break;
+        case '-':
+          strNum += 'minus ';
+          break;
+        case '.':
+          strNum += 'point ';
+          break;
+        case ',':
+          strNum += 'point ';
+          break;
+        default:
+          return strNum;
+      }
+    }
+    if (numberStr[i] === numberStr[numberStr.length - 1]) {
+      switch (numberStr[i]) {
+        case '1':
+          strNum += 'one';
+          break;
+        case '0':
+          strNum += 'zero';
+          break;
+        case '2':
+          strNum += 'two';
+          break;
+        case '3':
+          strNum += 'three';
+          break;
+        case '4':
+          strNum += 'four';
+          break;
+        case '5':
+          strNum += 'five';
+          break;
+        case '6':
+          strNum += 'six';
+          break;
+        case '7':
+          strNum += 'seven';
+          break;
+        case '8':
+          strNum += 'eight';
+          break;
+        case '9':
+          strNum += 'nine';
+          break;
+        case '-':
+          strNum += 'minus';
+          break;
+        case '.':
+          strNum += 'point';
+          break;
+        case ',':
+          strNum += 'point';
+          break;
+        default:
+          return strNum;
+      }
     }
   }
-  if (strNum[strNum.length - 1] === ' ') {
-    strNum = strNum.slice(0, -1);
-  }
+
   return strNum;
 }
 
@@ -258,8 +303,13 @@ function convertNumberToString(numberStr) {
  *  '0123210'   => true
  *  'qweqwe'    => false
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  for (let i = 0; i <= str.length / 2; i += 1) {
+    if (str[i] === str[str.length - 1 - i]) {
+      return true;
+    }
+  }
+  return false;
 }
 
 /**
@@ -276,8 +326,13 @@ function isPalindrome(/* str */) {
  *  'qwerty', 'Q'     => -1
  *  'qwerty', 'p'     => -1
  */
-function getIndexOf(/* str, letter */) {
-  throw new Error('Not implemented');
+function getIndexOf(str, letter) {
+  for (let i = 0; i < str.length - 1; i += 1) {
+    if (str[i] === letter) {
+      return i;
+    }
+  }
+  return -1;
 }
 
 /**
@@ -295,8 +350,16 @@ function getIndexOf(/* str, letter */) {
  *  12345, 0    => false
  *  12345, 6    => false
  */
-function isContainNumber(/* num, digit */) {
-  throw new Error('Not implemented');
+function isContainNumber(num, digit) {
+  let number = false;
+  for (let i = 0; i < num.length - 1; i += 1) {
+    if (num[i] === digit) {
+      number = true;
+    } else {
+      number = false;
+    }
+  }
+  return number;
 }
 
 /**

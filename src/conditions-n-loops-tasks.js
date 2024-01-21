@@ -196,7 +196,7 @@ function convertToRomanNumerals(num) {
 function convertNumberToString(numberStr) {
   let strNum = '';
   for (let i = 0; i <= numberStr.length - 1; i += 1) {
-    if (numberStr[i] !== numberStr[numberStr.length - 1]) {
+    if (i < numberStr.length - 1) {
       switch (numberStr[i]) {
         case '1':
           strNum += 'one ';
@@ -241,7 +241,7 @@ function convertNumberToString(numberStr) {
           return strNum;
       }
     }
-    if (numberStr[i] === numberStr[numberStr.length - 1]) {
+    if (i === numberStr.length - 1) {
       switch (numberStr[i]) {
         case '1':
           strNum += 'one';
@@ -304,12 +304,12 @@ function convertNumberToString(numberStr) {
  *  'qweqwe'    => false
  */
 function isPalindrome(str) {
-  for (let i = 0; i <= str.length / 2; i += 1) {
-    if (str[i] === str[str.length - 1 - i]) {
-      return true;
+  for (let i = 0; i < str.length / 2; i += 1) {
+    if (str[i] !== str[str.length - 1 - i]) {
+      return false;
     }
   }
-  return false;
+  return true;
 }
 
 /**
@@ -351,12 +351,11 @@ function getIndexOf(str, letter) {
  *  12345, 6    => false
  */
 function isContainNumber(num, digit) {
+  const numArr = String(num);
   let number = false;
-  for (let i = 0; i < num.length - 1; i += 1) {
-    if (num[i] === digit) {
+  for (let i = 0; i < numArr.length; i += 1) {
+    if (+numArr[i] === digit) {
       number = true;
-    } else {
-      number = false;
     }
   }
   return number;
